@@ -48,6 +48,8 @@ const layout1 = (layout, options) => {
 \`engine\` should be one of ${engines}${seeHomepage}`)
   }
 
+  delete options.data
+
   return wrap(data => {
     if (typeof layout === 'string') {
       return getLayout(layout)
@@ -55,7 +57,7 @@ const layout1 = (layout, options) => {
 
     // Here, layout must be a function.
     return getLayout(layout(data.file))
-  }, templateData, { engine })
+  }, templateData, options)
 }
 
 module.exports = layout1
